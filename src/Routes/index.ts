@@ -34,6 +34,7 @@ import { AdminEmploymentCommitteesRoutes } from "../Modules/EmploymentCommittees
 import { AdminEmploymentAcademicQualificationsRoutes } from "../Modules/EmploymentAcademicQualifications/EmploymentAcademicQualifications.routes";
 import { AdminEmployFunctionRoutes } from "../Modules/EmployFunction/EmployFunction.routes";
 import { AdminEmployEctRoutes } from "../Modules/EmployEct/EmployEct.routes";
+import { GetStatics } from "./statistics.route";
 
 
 
@@ -120,6 +121,7 @@ export const applyRoutes = (): Router => {
   AdminManagementRoutes(router, admin_prefix);
   AdminUserRoutes(router, admin_prefix);
   AdminFeadbackRoutes(router, admin_prefix);
+  router.get(`${admin_prefix}/statistics`, GetStatics);
   /**
    * ------------------------------------------------------------------------------
    * !!!! The Error handler is the last middleware on the router !!!!

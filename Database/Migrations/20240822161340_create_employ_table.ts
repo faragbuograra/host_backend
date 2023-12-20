@@ -5,16 +5,17 @@ const table_name = 'employ'
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(table_name, (table) => {
         table.increments('id').primary()
-        table.string('number').unique().nullable()
-        table.string('name').unique().nullable()
-        table.string('build').nullable()
-        table.string('type').nullable()
+        table.integer('number').unique().notNullable()
+        table.string('name').notNullable()
+
+
         table.integer('management_id').unsigned().nullable()
         .references('id').inTable('management')
         table.integer('department_id').unsigned().nullable()
         .references('id').inTable('department')
-        //note
-        table.string('note').nullable()
+
+        table.string('type').nullable()
+        table.string('typeemploy').nullable()
         table.boolean('status').defaultTo(true).notNullable()
         //user_id
         table.uuid('user_id').nullable()

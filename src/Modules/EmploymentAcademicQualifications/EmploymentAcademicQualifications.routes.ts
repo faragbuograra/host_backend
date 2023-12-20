@@ -15,7 +15,7 @@ export const AdminEmploymentAcademicQualificationsRoutes = (router: Router, pref
     // TODO: add insert, update and delete to admin
 
     router
-        .route(`${ prefix }/employPersonalCommitments`)  // domain:8000/api/v1/admin/categorys
+        .route(`${ prefix }/employmentAcademicQualifications`)  // domain:8000/api/v1/admin/categorys
         .get(
             AdminEmploymentAcademicQualificationsController.index
         )
@@ -25,7 +25,7 @@ export const AdminEmploymentAcademicQualificationsRoutes = (router: Router, pref
         )
 
     router
-        .route(`${ prefix }/employPersonalCommitments/:id`) // domain:8000/api/v1/admin/categorys/1
+        .route(`${ prefix }/employmentAcademicQualifications/:id`) // domain:8000/api/v1/admin/categorys/1
         .get(
             //to do 
             AdminEmploymentAcademicQualificationsController.index

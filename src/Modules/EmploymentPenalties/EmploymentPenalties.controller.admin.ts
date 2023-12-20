@@ -26,10 +26,11 @@ export const AdminEmploymentPenaltiesController = {
         const formattedDate = currentDate.toISOString().substring(0, 10);
         const trx = await EmploymentPenalties.startTransaction()
         data.status = true
-        if (file && file[0]!=null   ) {
+         if (file && file[0]!=null   ) {
             //get 
             data.file = formattedDate +'/'+file[0].filename
         }
+        data.user_id = req.user.id
 
         try {
             // store file

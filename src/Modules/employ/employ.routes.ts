@@ -23,12 +23,21 @@ export const AdminEmployRoutes = (router: Router, prefix: string) => {
             Multer.none,
             AdminEmployController.store
         )
+        router
+        .route(`${ prefix }/indexemploy`)  // domain:8000/api/v1/admin/categorys
+        .get(
+            AdminEmployController.tindex
+        )
+        // .post(
+        //     Multer.none,
+        //     AdminEmployController.store
+        // )
 
     router
         .route(`${ prefix }/employ/:id`) // domain:8000/api/v1/admin/categorys/1
         .get(
             //to do 
-            AdminEmployController.index
+            AdminEmployController.show
         )
         .patch(
             Multer.simple('Employ'),

@@ -4,7 +4,7 @@ import { DOMAIN }                             from "../../config"
 
 import { TimestampedModel }                   from '../Shared/TimestampedModel'
 
-export default class EmployRightToSign extends TimestampedModel {
+export default class EmployRightToSigs extends TimestampedModel {
 
     // Table name
     static tableName = 'employRightToSign'
@@ -17,7 +17,7 @@ export default class EmployRightToSign extends TimestampedModel {
 
     static jsonSchema = {
         type: 'object',
-        required: [ 'title' ],
+      
         properties: {
             title: { type: 'string', minLength: 1 }
         }
@@ -31,7 +31,14 @@ export default class EmployRightToSign extends TimestampedModel {
      * Model Relations
      * ---------------------------------------------------------------------
      */
-    
+    $parseDatabaseJson(json: Objection.Pojo): Objection.Pojo {
+        json       = super.$parseDatabaseJson(json);
+        json.file   = json.file != null ? `${DOMAIN}/uploads/files/${json.file}` : null
+
+        
+
+        return json
+    }
     // One-to-many relation with Subcategory model
     static relationMappings = {
     

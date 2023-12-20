@@ -26,7 +26,7 @@ export const AdminUserController = {
   show: async (req: Request, res: Response, next: NextFunction) => {
     await User.query()
       .findById(req.params.id)
-      .withGraphFetched(`[role,department,management]`)
+      .withGraphFetched(`[department,management]`)
       .throwIfNotFound({ message: "User not found!" })
       .then((result: User) => res.json(result))
       .catch((err) => next(err));
