@@ -93,10 +93,7 @@ async function validateUser(req: Request, res: Response) {
   } else {
     errors.push({ management_id: `The management_id is required` });
   }
-  if (req.body.role_id) {
-  } else {
-    errors.push({ role_id: `The role_id is required` });
-  }
+
   if (req.body.department_id) {
   } else {
     errors.push({ department_id: `The department_id is required` });
