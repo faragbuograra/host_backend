@@ -8,8 +8,7 @@ import helmet                       from 'helmet'
 export const app: Application = express()
 
 app.use(cors({
-    origin: 'https://11.0.0.19:3030',
-
+    origin: CORS_ORIGIN,
     methods: [ 'GET', 'POST', 'PATCH' ],
     credentials: true
 }))
