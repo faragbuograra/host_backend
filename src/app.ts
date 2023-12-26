@@ -7,7 +7,11 @@ import helmet                       from 'helmet'
 
 export const app: Application = express()
 
-app.use(cors());
+app.use(cors({
+    origin: CORS_ORIGIN,
+    methods: [ 'GET', 'POST', 'PATCH' ],
+    credentials: true
+}))
 app.use(helmet({crossOriginResourcePolicy: {policy: "cross-origin"}}));
 app.use(express.json());
 app.use(express.static(PUBLIC_PATH))
