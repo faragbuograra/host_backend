@@ -7,15 +7,13 @@ import helmet                       from 'helmet'
 
 export const app: Application = express()
 
+app.use(cors({
+    origin: 'https://11.0.0.19:3030',
 
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
- }
- 
- app.use(cors(corsOptions))
-// app.use(helmet({crossOriginResourcePolicy: {policy: "cross-origin"}}));
+    methods: [ 'GET', 'POST', 'PATCH' ],
+    credentials: true
+}))
+app.use(helmet({crossOriginResourcePolicy: {policy: "cross-origin"}}));
 app.use(express.json());
 app.use(express.static(PUBLIC_PATH))
 app.use(express.urlencoded({ extended: true }))
