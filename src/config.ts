@@ -6,7 +6,7 @@ export const SERVER_PORT = process.env.SERVER_PORT
 export const CORS_ORIGIN = [
     "http://localhost:8022",
     'http://localhost:3000/',
-    'http://192.168.31.22'
+    'https://11.0.0.19:3030/'
 
 ]
 
