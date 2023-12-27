@@ -12,22 +12,22 @@ export const PublicAuthRoutes = (router: Router, prefix: string) => {
         Multer.none,
         webLogin
     )
-    router.post(
-        `${ prefix }/login`,
-        Multer.none,
-        Login
-    )
-    router.post(
-        `${ prefix }/register`,
-        Multer.none,
-        register
-    )
+    // router.post(
+    //     `${ prefix }/login`,
+    //     Multer.none,
+    //     Login
+    // )
+    // // router.post(
+    // //     `${ prefix }/register`,
+    // //     Multer.none,
+    // //     register
+    // // )
 
-    .route(`${prefix}/users/activePhone`)
-    .patch(
-        // Multer.single("users","users", "img"),
-        UserController.activePhone
-    )
+    // .route(`${prefix}/users/activePhone`)
+    // .patch(
+    //     // Multer.single("users","users", "img"),
+    //     UserController.activePhone
+    // )
 
 
    

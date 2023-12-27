@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { ValidationError }                 from 'objection'
 import { User }                            from '../Modules/Users/user.model'
 
-export const RoleMiddleware = (grantedRole: number) => {
+export const RoleMiddleware = (grantedRole: string) => {
     return (req: Request, res: Response, next: NextFunction) => {
         let user = req.user as User
         if (!user) {
@@ -23,7 +23,7 @@ export const RoleMiddleware = (grantedRole: number) => {
             return next(err)
         }
 
-        if (user.role_id  && grantedRole != user.role_id) {
+        if (user.role  && grantedRole != user.role) {
        
             let err = new ValidationError({
                 type: "UnauthorizedAccess",

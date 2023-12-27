@@ -86,7 +86,6 @@ export const applyRoutes = (): Router => {
    */
   // router.use(user_prefix, RoleMiddleware(2));
 
-  PublicFeadbackRoutes(router, user_prefix);
 
 
   router.get(`${prefix}/me`, me);
@@ -99,7 +98,7 @@ export const applyRoutes = (): Router => {
    *  ADMIN ROUTES
    * ------------------------------------------------------------------------------
    */
-  router.use( admin_prefix, RoleMiddleware(1));
+  router.use( admin_prefix, RoleMiddleware('admin'));
   AdminEmployRoutes(router, admin_prefix);
   AdminEmploymentAcademicQualificationsRoutes(router, admin_prefix);
   AdminEmploymentCommitteesRoutes(router, admin_prefix);
