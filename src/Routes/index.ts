@@ -92,7 +92,7 @@ export const applyRoutes = (): Router => {
 
   router.get(`${prefix}/logout`, logout);
 
-  UserRoutes(router, prefix);
+ 
   /**
    * ------------------------------------------------------------------------------
    *  ADMIN ROUTES
