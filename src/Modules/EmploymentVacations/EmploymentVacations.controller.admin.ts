@@ -4,7 +4,7 @@ import { UPLOADS_PATH }                    from '../../config'
 import EmploymentVacations                               from './EmploymentVacations.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
-
+import Log from '../log/log.model';
 export const AdminEmploymentVacationsController = {
 
     //index
@@ -76,7 +76,18 @@ export const AdminEmploymentVacationsController = {
             .query(trx)
             .patchAndFetchById(id, data)
             .throwIfNotFound({ message: 'EmploymentVacations not found!' })
-            .then((result) => res.json(result))
+            .then(async (result) => {
+                await Log
+                .query()
+                .insert({
+                    'user_id': req.user.id,
+                    'action': "edit",
+                    'ip': req.ip,
+                    'note': "edit EmploymentVacations"
+                }).then((result0) => res.json(result))
+              
+                
+                })
             await trx.commit()
         } catch (err) {
             // Delete file

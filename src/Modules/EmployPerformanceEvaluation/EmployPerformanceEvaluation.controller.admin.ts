@@ -4,7 +4,7 @@ import { UPLOADS_PATH }                    from '../../config'
 import EmployPerformanceEvaluation                               from './EmployPerformanceEvaluation.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
-
+import Log from '../log/log.model';
 export const AdminEmployPerformanceEvaluationController = {
 
     //index
@@ -76,7 +76,18 @@ export const AdminEmployPerformanceEvaluationController = {
             .query(trx)
             .patchAndFetchById(id, data)
             .throwIfNotFound({ message: 'EmployPerformanceEvaluation not found!' })
-            .then((result) => res.json(result))
+            .then(async (result) => {
+                await Log
+                .query()
+                .insert({
+                    'user_id': req.user.id,
+                    'action': "edit",
+                    'ip': req.ip,
+                    'note': "edit EmployPerformanceEvaluation"
+                }).then((result0) => res.json(result))
+              
+                
+                })
             await trx.commit()
         } catch (err) {
             // Delete file

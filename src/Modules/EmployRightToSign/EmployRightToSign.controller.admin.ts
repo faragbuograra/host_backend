@@ -4,7 +4,7 @@ import { UPLOADS_PATH }                    from '../../config'
 import EmployRightToSign                               from './EmployRightToSign.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
-
+import Log from '../log/log.model';
 export const AdminEmployRightToSignController = {
 
     //index
@@ -85,7 +85,18 @@ export const AdminEmployRightToSignController = {
             .query(trx)
             .patchAndFetchById(id, data)
             .throwIfNotFound({ message: 'EmployRightToSign not found!' })
-            .then((result) => res.json(result))
+            .then(async (result) => {
+                await Log
+                .query()
+                .insert({
+                    'user_id': req.user.id,
+                    'action': "edit",
+                    'ip': req.ip,
+                    'note': "edit EmployRightToSign"
+                }).then((result0) => res.json(result))
+              
+                
+                })
             await trx.commit()
         } catch (err) {
             // Delete file

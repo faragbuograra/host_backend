@@ -4,6 +4,7 @@ import { UPLOADS_PATH }                    from '../../config'
 import EmployFunction                               from './EmployFunction.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
+import Log from '../log/log.model';
 
 export const AdminEmployFunctionController = {
 
@@ -40,7 +41,18 @@ export const AdminEmployFunctionController = {
             await EmployFunction
                 .query(trx)
                 .insert(data)
-                .then((result) => res.json(result))
+                .then(async (result) => {
+                    await Log
+                    .query()
+                    .insert({
+                        'user_id': req.user.id,
+                        'action': "edit",
+                        'ip': req.ip,
+                        'note':"edit EmployFunction"
+                    }).then((result0) => res.json(result))
+                  
+                    
+                    })
 
             await trx.commit()
         } catch (err) {
