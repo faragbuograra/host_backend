@@ -89,15 +89,7 @@ async function validateUser(req: Request, res: Response) {
   } else {
     errors.push({ password: `The password is required` });
   }
-  if (req.body.management_id) {
-  } else {
-    errors.push({ management_id: `The management_id is required` });
-  }
 
-  if (req.body.department_id) {
-  } else {
-    errors.push({ department_id: `The department_id is required` });
-  }
   let errorsObject = {};
 
   errors.forEach(error => {
@@ -107,7 +99,7 @@ async function validateUser(req: Request, res: Response) {
   });
 
   if (errors.length > 0) {
-    return res.status(400).json({
+    return res.status(401).json({
       errors: errorsObject,
       message: "Validation error",
     });
