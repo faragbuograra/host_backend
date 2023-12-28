@@ -8,12 +8,6 @@ export async function up(knex: Knex): Promise<void> {
         table.integer('number').unique().notNullable()
         table.string('name').notNullable()
 
-
-        table.integer('management_id').unsigned().nullable()
-        .references('id').inTable('management')
-        table.integer('department_id').unsigned().nullable()
-        .references('id').inTable('department')
-
         table.string('type').nullable()
         table.string('typeemploy').nullable()
         table.boolean('status').defaultTo(true).notNullable()

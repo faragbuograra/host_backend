@@ -142,23 +142,23 @@ export class User extends TimestampedModel {
      */
     static relationMappings = () => ({
    
-        department: {
-            relation: Model.HasOneRelation,
-            modelClass: Department,
-            join: {
-                from: 'user.department_id',
-             to: 'department.id'
-            },
-            filter: (qb: QueryBuilderType<Department>) => qb.select('department.name')
-        },
-        management: {
-            relation:  Model.HasOneRelation,
-            modelClass: Management,
-            join: {
-                from: 'user.management_id',
-             to: 'management.id'
-            },
-            filter: (qb: QueryBuilderType<Management>) => qb.select('management.name')
-        },
+        // department: {
+        //     relation: Model.HasOneRelation,
+        //     modelClass: Department,
+        //     join: {
+        //         from: 'user.department_id',
+        //      to: 'department.id'
+        //     },
+        //     filter: (qb: QueryBuilderType<Department>) => qb.select('department.name')
+        // },
+        // management: {
+        //     relation:  Model.HasOneRelation,
+        //     modelClass: Management,
+        //     join: {
+        //         from: 'user.management_id',
+        //      to: 'management.id'
+        //     },
+        //     filter: (qb: QueryBuilderType<Management>) => qb.select('management.name')
+        // },
     })
 }

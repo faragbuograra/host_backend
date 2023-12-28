@@ -8,10 +8,6 @@ export async function up(knex: Knex): Promise<void> {
         table.string('username').unique().nullable()
         table.string('name').unique().nullable()
         table.string('password').nullable()
-        table.integer('management_id').unsigned().nullable()
-        .references('id').inTable('management')
-        table.integer('department_id').unsigned().nullable()
-        .references('id').inTable('department')
         table.boolean('status').defaultTo(true).notNullable()
   //rolestring
         table.string('role').nullable()

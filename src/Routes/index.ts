@@ -75,9 +75,9 @@ export const applyRoutes = (): Router => {
 
 
 
-  PublicManagementRoutes(router, prefix);
+  // PublicManagementRoutes(router, prefix);
 
-  PublicDepartmentRoutes(router, prefix);
+  // PublicDepartmentRoutes(router, prefix);
 
   /**
    * ------------------------------------------------------------------------------

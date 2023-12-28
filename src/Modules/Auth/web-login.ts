@@ -54,7 +54,7 @@ console.log( req.body)
                     .json({
                         status: 'success',
                         message: 'logged in',
-                        role: result.role_id,
+                        role: result.role,
                         token: result.$genToken()
                     })
             } else {

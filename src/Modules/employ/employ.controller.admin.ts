@@ -22,9 +22,7 @@ export const AdminEmployController = {
     }
     // Build the query dynamically based on the query parameters
     const query = Employ.query().whereBetween('number', [fromNumber, toNumber])
-    .withGraphFetched(  
-      `[department,management]`
-    )
+
 
     
     // Continue with the rest of your code for executing the query
@@ -95,7 +93,7 @@ export const AdminEmployController = {
     }
     let query = Employ.query()
       .withGraphFetched(
-        `[department,management,employmentDocuments,employFunction,employmentAcademicQualifications,employmentTransportation,employmentPromotions,employmentHealthInsurance,employmentPenalties,employmentCommittees,employmentVacations,employRightToSign,employPerformanceEvaluation,employPersonalCommitments,employEct,employmentscientificsessions]`
+        `[employmentDocuments,employFunction,employmentAcademicQualifications,employmentTransportation,employmentPromotions,employmentHealthInsurance,employmentPenalties,employmentCommittees,employmentVacations,employRightToSign,employPerformanceEvaluation,employPersonalCommitments,employEct,employmentscientificsessions]`
       )
       .findById(req.params.id)
       .then((result) => res.json(result));
