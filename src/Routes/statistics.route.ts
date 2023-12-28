@@ -29,14 +29,6 @@ export const GetStatics = async (
     .count()
     .then((rows: any) => Number(rows[0].count));
 
-  const Departments = await Department.query()
-
-    .count()
-    .then((rows: any) => Number(rows[0].count));
-  const management = await Management.query()
-
-    .count()
-    .then((rows: any) => Number(rows[0].count));
 
     const employ = await Employ.query()
     .count()
@@ -52,9 +44,9 @@ export const GetStatics = async (
 
   const statistics = {
     employ,
-    management,
+    management :0,
     users,
-    Departments,
+    Departments:0,
     todayusers,
     todayemploy
     //   mailto:mailStatistics,
