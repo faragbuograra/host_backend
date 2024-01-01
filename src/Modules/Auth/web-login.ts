@@ -32,7 +32,7 @@ console.log( req.body)
         .throwIfNotFound({ message: "User not found" })
         .then(async (result) => {
             const valid = await result.$validatePassword(password)
-            if (result.status == 'false') {
+            if (result.status == false) {
                 return res.status(451).json({message: 'user is not verified'})
             }
             const generated = result.$genToken()

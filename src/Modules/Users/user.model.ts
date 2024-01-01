@@ -22,7 +22,7 @@ export class User extends TimestampedModel {
     phone!: string | null
     password!: string | null
     role_id!: number| null
-    status!: string
+    status!: boolean
     img!: string | null
     birthdate!: Date | string | null // unify date value output
     balance!: number
