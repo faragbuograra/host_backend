@@ -98,7 +98,7 @@ export const applyRoutes = (): Router => {
    *  ADMIN ROUTES
    * ------------------------------------------------------------------------------
    */
-  router.use( admin_prefix, RoleMiddleware('admin'));
+  // router.use( admin_prefix, RoleMiddleware('admin'));
   AdminEmployRoutes(router, admin_prefix);
   AdminEmploymentAcademicQualificationsRoutes(router, admin_prefix);
   AdminEmploymentCommitteesRoutes(router, admin_prefix);
