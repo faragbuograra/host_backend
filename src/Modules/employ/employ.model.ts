@@ -4,7 +4,7 @@ import { DOMAIN }                             from "../../config"
 
 import { TimestampedModel }                   from '../Shared/TimestampedModel'
 import Department from '../Department/department.model'
-import Management from '../Management/management.model'
+import Management from '../Decisions/decisions.model'
 import EmploymentDocuments from '../EmploymentDocuments/EmploymentDocuments.model'
 import EmployFunction from '../EmployFunction/EmployFunction.model'
 import EmploymentAcademicQualifications from '../EmploymentAcademicQualifications/EmploymentAcademicQualifications.model'

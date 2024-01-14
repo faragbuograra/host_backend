@@ -4,10 +4,10 @@ import { DOMAIN }                             from "../../config"
 
 import { TimestampedModel }                   from '../Shared/TimestampedModel'
 
-export default class Management extends TimestampedModel {
+export default class Decisions extends TimestampedModel {
 
     // Table name
-    static tableName = 'management'
+    static tableName = 'decisions'
     static defaultSort = 'name'
 
     // Table columns
@@ -25,7 +25,14 @@ export default class Management extends TimestampedModel {
 
     // Formats img and thumb fields when existing model value returns from database
 
+    $parseDatabaseJson(json: Objection.Pojo): Objection.Pojo {
+        json       = super.$parseDatabaseJson(json);
+        json.file   = json.file != null ? `${DOMAIN}/uploads/files/${json.file}` : null
 
+        
+
+        return json
+    }
     /*
      * ---------------------------------------------------------------------
      * Model Relations

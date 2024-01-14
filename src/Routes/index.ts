@@ -17,7 +17,7 @@ import { AdminSystemInfoRoutes, PublicSystemInfoRoutes } from "../Modules/System
 import { me } from "../Modules/Auth/me";
 import { logout } from "../Modules/Auth/logout";
 
-import { AdminManagementRoutes, PublicManagementRoutes } from "../Modules/Management/management.routes";
+import { AdminDecisionsRoutes } from "../Modules/Decisions/decisions.routes";
 import { AdminDepartmentRoutes, PublicDepartmentRoutes } from "../Modules/Department/department.routes";
 import { AdminEmployRoutes } from "../Modules/employ/employ.routes";
 import { AdminEmployRightToSignRoutes } from "../Modules/EmployRightToSign/EmployRightToSign.routes";
@@ -75,7 +75,7 @@ export const applyRoutes = (): Router => {
 
 
 
-  // PublicManagementRoutes(router, prefix);
+  // PublicDecisionsRoutes(router, prefix);
 
   // PublicDepartmentRoutes(router, prefix);
 
@@ -117,7 +117,7 @@ export const applyRoutes = (): Router => {
 
   AdminSystemInfoRoutes(router, admin_prefix);
   AdminDepartmentRoutes(router, admin_prefix)
-  AdminManagementRoutes(router, admin_prefix);
+  AdminDecisionsRoutes(router, admin_prefix);
   AdminUserRoutes(router, admin_prefix);
   AdminFeadbackRoutes(router, admin_prefix);
   router.get(`${admin_prefix}/statistics`, GetStatics);

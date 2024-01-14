@@ -8,7 +8,7 @@ import { TimestampedModel }               from '../Shared/TimestampedModel'
 import { type } from 'node:os'
 
 import Department from '../Department/department.model'
-import Management from '../Management/management.model'
+import Management from '../Decisions/decisions.model'
 
 export class User extends TimestampedModel {
   

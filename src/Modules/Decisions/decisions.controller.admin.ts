@@ -1,18 +1,18 @@
  import { NextFunction, Request, Response } from 'express'
 import path                                from 'path'
 import { UPLOADS_PATH }                    from '../../config'
-import Management                               from './management.model'
+import Decisions                               from './decisions.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
 
-export const AdminManagementController = {
+export const AdminDecisionsController = {
 
     //index
     index: async (req: Request, res: Response, next: NextFunction) => {
 
-        let query = Management.query()
+        let query = Decisions.query()
         return await UtilDatabase
-            .finder(Management, req.query, query)
+            .finder(Decisions, req.query, query)
             
             .then((results) => res.json(results))
             .catch(err => next(err))
@@ -23,13 +23,13 @@ export const AdminManagementController = {
         const data = req.body
         const img  = req.file
    
-        const trx = await Management.startTransaction()
+        const trx = await Decisions.startTransaction()
         data.status = true
         try {
             // store file
 
        
-            await Management
+            await Decisions
                 .query(trx)
                 .insert(data)
                 .then((result) => res.json(result))
@@ -56,7 +56,7 @@ export const AdminManagementController = {
         const { id } = req.params
         const img  = req.file
    
-        const trx = await Management.startTransaction()
+        const trx = await Decisions.startTransaction()
      
         try {
             // store file
@@ -65,16 +65,16 @@ export const AdminManagementController = {
                 data.img = img.filename
                 console.log(data)
             }
-        await Management
+        await Decisions
             .query(trx)
             .patchAndFetchById(id, data)
-            .throwIfNotFound({ message: 'Management not found!' })
+            .throwIfNotFound({ message: 'Decisions not found!' })
             .then((result) => res.json(result))
             await trx.commit()
         } catch (err) {
             // Delete file
             if (img) {
-                const img_path = path.resolve(UPLOADS_PATH, 'Managements', img.filename)
+                const img_path = path.resolve(UPLOADS_PATH, 'Decisionss', img.filename)
                 await unlink(img_path);
 
                 console.log(`successfully deleted ${ img_path }`);
@@ -91,18 +91,7 @@ export const AdminManagementController = {
      * Destroy an instance of a model
      * ---------------------------------------------------------------------
      */
-    destroy: async (req: Request, res: Response, next: NextFunction) => {
-
-        const { id } = req.params
-
-        await Management
-            .query()
-            .deleteById(id)
-            .throwIfNotFound({ message: 'Management not found!' })
-            .returning('*')
-            .then((result) => res.json(result))
-            .catch(err => next(err))
-
-    }
+  
+ 
 
 }

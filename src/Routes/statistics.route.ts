@@ -8,7 +8,7 @@ import Department from "../Modules/Department/department.model";
 
 import { raw } from "objection";
 import moment from "moment";
-import Management from "../Modules/Management/management.model";
+import Management from "../Modules/Decisions/decisions.model";
 import Employ from "../Modules/employ/employ.model";
 
 export const GetStatics = async (
