@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 
-const table_name = 'user'
+const table_name = 'decisions'
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(table_name, (table) => {
