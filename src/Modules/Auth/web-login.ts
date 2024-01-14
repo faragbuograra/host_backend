@@ -57,6 +57,7 @@ console.log( req.body)
                         status: 'success',
                         message: 'logged in',
                         role: result.role,
+                        type: result.type,
                         token: result.$genToken()
                     })
             } else {
