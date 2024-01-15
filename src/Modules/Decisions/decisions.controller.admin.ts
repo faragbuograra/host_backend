@@ -28,7 +28,7 @@ export const AdminDecisionsController = {
         try {
             // store file
             if (img) {
-                data.img = img.filename
+                data.file = img.filename
           
             }
        
@@ -40,6 +40,12 @@ export const AdminDecisionsController = {
             await trx.commit()
         } catch (err) {
             // Delete file
+            if (img) {
+                const img_path = path.resolve(UPLOADS_PATH, 'files', img.filename)
+                await unlink(img_path);
+
+                console.log(`successfully deleted ${ img_path }`);
+            }
           
 
             await trx.rollback()

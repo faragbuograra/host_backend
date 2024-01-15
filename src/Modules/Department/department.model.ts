@@ -7,7 +7,7 @@ import { TimestampedModel }                   from '../Shared/TimestampedModel'
 export default class Department extends TimestampedModel {
 
     // Table name
-    static tableName = 'decisions'
+    static tableName = 'department'
     static defaultSort = 'name'
 
     // Table columns
