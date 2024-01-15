@@ -17,7 +17,7 @@ export default class Decisions extends TimestampedModel {
 
     static jsonSchema = {
         type: 'object',
-        required: [ 'name' ],
+
         properties: {
             name: { type: 'string', minLength: 1 }
         }

@@ -20,14 +20,17 @@ export const AdminDecisionsController = {
     },
     store: async (req: Request, res: Response, next: NextFunction) => {
 
-        const data = req.body
+        var data = req.body
         const img  = req.file
    
         const trx = await Decisions.startTransaction()
         data.status = true
         try {
             // store file
-
+            if (img) {
+                data.img = img.filename
+          
+            }
        
             await Decisions
                 .query(trx)

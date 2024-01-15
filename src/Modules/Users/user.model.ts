@@ -5,10 +5,7 @@ import * as jsonwebtoken                  from "jsonwebtoken"
 import { DOMAIN, JWT_EXPIRY, JWT_SECRET } from '../../config'
 
 import { TimestampedModel }               from '../Shared/TimestampedModel'
-import { type } from 'node:os'
 
-import Department from '../Department/department.model'
-import Management from '../Decisions/decisions.model'
 
 export class User extends TimestampedModel {
   

@@ -2,7 +2,7 @@ import cors                         from 'cors'
 import { applyRoutes }              from './Routes/index'
 import express, { Application }     from 'express'
 import { CORS_ORIGIN, PUBLIC_PATH } from './config'
-import helmet                       from 'helmet'
+
 
 
 export const app: Application = express()
