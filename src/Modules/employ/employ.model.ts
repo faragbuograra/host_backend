@@ -58,24 +58,8 @@ export default class Employ extends TimestampedModel {
     // One-to-many relation with Subcategory model
     static relationMappings = {
     
-        department: {
-            relation: Model.HasOneRelation,
-            modelClass: Department,
-            join: {
-                from: 'employ.department_id',
-             to: 'department.id'
-            },
-            filter: (qb: QueryBuilderType<Department>) => qb.select('department.name')
-        },
-        management: {
-            relation:  Model.HasOneRelation,
-            modelClass: Management,
-            join: {
-                from: 'employ.management_id',
-             to: 'management.id'
-            },
-            filter: (qb: QueryBuilderType<Management>) => qb.select('management.name')
-        },
+       
+      
         employmentDocuments: {
             relation: Model.HasManyRelation,
             modelClass: EmploymentDocuments,
