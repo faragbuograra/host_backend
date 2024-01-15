@@ -21,18 +21,19 @@ export const AdminDecisionsController = {
     store: async (req: Request, res: Response, next: NextFunction) => {
 
         var data = req.body
-        const img  = req.file
-   
+        const file  = req.files
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().substring(0, 10);
         const trx = await Decisions.startTransaction()
         data.user_id = req.user.id
 
         try {
             // store file
-            if (img) {
-                data.file = img.filename
-          
+            if (file && file[0]!=null   ) {
+                //get 
+                data.file = formattedDate +'/'+file[0].filename
             }
-       console.log(data)
+            data.user_id = req.user.id
             await Decisions
                 .query(trx)
                 .insert(data)
@@ -41,8 +42,8 @@ export const AdminDecisionsController = {
             await trx.commit()
         } catch (err) {
             // Delete file
-            if (img) {
-                const img_path = path.resolve(UPLOADS_PATH, 'files', img.filename)
+            if (file && file[0]!=null  ) {
+                const img_path = path.resolve(UPLOADS_PATH, 'files', file[0].filename)
                 await unlink(img_path);
 
                 console.log(`successfully deleted ${ img_path }`);
