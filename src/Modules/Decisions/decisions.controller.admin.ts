@@ -24,14 +24,15 @@ export const AdminDecisionsController = {
         const img  = req.file
    
         const trx = await Decisions.startTransaction()
-        data.status = true
+        data.user_id = req.user.id
+
         try {
             // store file
             if (img) {
                 data.file = img.filename
           
             }
-       
+       console.log(data)
             await Decisions
                 .query(trx)
                 .insert(data)
