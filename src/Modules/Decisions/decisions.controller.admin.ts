@@ -65,17 +65,14 @@ export const AdminDecisionsController = {
 
         var data   = req.body
         const { id } = req.params
-        const img  = req.file
+
    
         const trx = await Decisions.startTransaction()
      
         try {
             // store file
 
-            if (img) {
-                data.img = img.filename
-                console.log(data)
-            }
+         
         await Decisions
             .query(trx)
             .patchAndFetchById(id, data)
@@ -84,12 +81,7 @@ export const AdminDecisionsController = {
             await trx.commit()
         } catch (err) {
             // Delete file
-            if (img) {
-                const img_path = path.resolve(UPLOADS_PATH, 'Decisionss', img.filename)
-                await unlink(img_path);
-
-                console.log(`successfully deleted ${ img_path }`);
-            }
+        
 
             await trx.rollback()
             return next(err)}
