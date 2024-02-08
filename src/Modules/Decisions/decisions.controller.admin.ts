@@ -21,12 +21,9 @@ export const AdminDecisionsController = {
     show: async (req: Request, res: Response, next: NextFunction) => {
 
         let query = Decisions.query()
-        .where('id', req.params.id)
-   
-      
-            
-            .then((results) => res.json(results))
-            .catch(err => next(err))
+        .findById(req.params.id)
+        .then((result) => res.json(result))
+        .catch(err => next(err))
 
     },
     store: async (req: Request, res: Response, next: NextFunction) => {
