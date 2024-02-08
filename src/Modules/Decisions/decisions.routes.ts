@@ -21,7 +21,7 @@ export const AdminDecisionsRoutes = (router: Router, prefix: string) => {
         .route(`${ prefix }/decisions/:id`) // domain:8000/api/v1/admin/categorys/1
         .get(
             //to do 
-            AdminDecisionsController.index
+            AdminDecisionsController.show
         )
         .patch(
             Multer.simple('decisions'),

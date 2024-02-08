@@ -18,6 +18,17 @@ export const AdminDecisionsController = {
             .catch(err => next(err))
 
     },
+    show: async (req: Request, res: Response, next: NextFunction) => {
+
+        let query = Decisions.query()
+        .where('id', req.params.id)
+   
+      
+            
+            .then((results) => res.json(results))
+            .catch(err => next(err))
+
+    },
     store: async (req: Request, res: Response, next: NextFunction) => {
 
         var data = req.body
