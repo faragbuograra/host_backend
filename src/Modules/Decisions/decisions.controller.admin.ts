@@ -4,6 +4,7 @@ import { UPLOADS_PATH }                    from '../../config'
 import Decisions                               from './decisions.model'
 import { unlink }                          from 'node:fs/promises';
 import { UtilDatabase }                    from '../../Utils/finder'
+import Log from '../log/log.model';
 
 export const AdminDecisionsController = {
 
@@ -42,11 +43,24 @@ export const AdminDecisionsController = {
                 data.file = formattedDate +'/'+file[0].filename
             }
             data.user_id = req.user.id
+            await Log
+            .query()
+            .insert({
+                'user_id': req.user.id,
+                'action': "insert decision",
+                'ip': req.ip,
+                'note': "insert decision"
+            })
+          
             await Decisions
                 .query(trx)
                 .insert(data)
                 .then((result) => res.json(result))
-
+             
+          
+     
+          
+                await trx.commit();
             await trx.commit()
         } catch (err) {
             // Delete file
@@ -78,7 +92,15 @@ export const AdminDecisionsController = {
         const trx = await Decisions.startTransaction()
      
         try {
-            // store file
+            await Log
+            .query()
+            .insert({
+                'user_id': req.user.id,
+                'action': "edit decision id "+id,
+                'ip': req.ip,
+                'note': "edit decision"
+            })
+          
 
          
         await Decisions

@@ -147,7 +147,7 @@ export const AdminEmployController = {
       .query()
       .insert({
           'user_id': req.user.id,
-          'action': "update employ",
+          'action': "update employ id "+id,
           'ip': req.ip,
           'note': "update employ"
       })

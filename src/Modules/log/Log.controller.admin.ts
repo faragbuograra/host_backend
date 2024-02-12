@@ -20,17 +20,9 @@ export const AdminLogController = {
     },
     store: async (req: Request, res: Response, next: NextFunction) => {
 
-        var data = req.body
-        const file  = req.files
-        const currentDate = new Date();
-        const formattedDate = currentDate.toISOString().substring(0, 10);
+var data = req.body
         const trx = await Log.startTransaction()
-        data.status = true
-        if (file && file[0]!=null   ) {
-            //get 
-            data.file = formattedDate +'/'+file[0].filename
-        }
-        data.user_id = req.user.id
+
 
 
         try {
@@ -38,20 +30,19 @@ export const AdminLogController = {
 
        
             await Log
-                .query(trx)
-                .insert(data)
+            .query()
+            .insert({
+                'user_id': req.user.id,
+                'action': "open file + "+data.name,
+                'ip': req.ip,
+                'note': "open file + "+data.name,
+            })
                 .then((result) => res.json(result))
 
             await trx.commit()
         } catch (err) {
             // Delete file from folder
-            if (file) {
-                const img_path = path.resolve(UPLOADS_PATH, 'files', formattedDate +'/'+file[0].filename)
-                await unlink(img_path);
-
-                console.log(`successfully deleted ${ img_path }`);
-            }
-
+       
             
           
 
