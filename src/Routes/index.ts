@@ -35,6 +35,7 @@ import { AdminEmploymentAcademicQualificationsRoutes } from "../Modules/Employme
 import { AdminEmployFunctionRoutes } from "../Modules/EmployFunction/EmployFunction.routes";
 import { AdminEmployEctRoutes } from "../Modules/EmployEct/EmployEct.routes";
 import { GetStatics } from "./statistics.route";
+import { AdminLogRoutes } from "../Modules/log/Log.routes";
 
 
 
@@ -114,7 +115,7 @@ export const applyRoutes = (): Router => {
   AdminEmploymentDocumentsRoutes(router, admin_prefix);
   AdminEmploymentscientificsessionsRoutes(router, admin_prefix)
   AdminEmploymentPromotionsRoutes(router, admin_prefix);
-
+  AdminLogRoutes(router, admin_prefix);
   AdminSystemInfoRoutes(router, admin_prefix);
   AdminDepartmentRoutes(router, admin_prefix)
   AdminDecisionsRoutes(router, admin_prefix);
