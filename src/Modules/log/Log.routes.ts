@@ -23,6 +23,9 @@ export const AdminLogRoutes = (router: Router, prefix: string) => {
             Multer.none,
             AdminLogController.store
         )
+        // .delete(
+        //     AdminLogController.destroy
+        // )
 
 
 }

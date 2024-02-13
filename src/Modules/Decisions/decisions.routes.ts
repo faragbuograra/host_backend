@@ -24,7 +24,7 @@ export const AdminDecisionsRoutes = (router: Router, prefix: string) => {
             AdminDecisionsController.show
         )
         .patch(
-            Multer.simple('decisions'),
+            Multer.none,
             AdminDecisionsController.update
         )
       

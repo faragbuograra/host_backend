@@ -10,15 +10,27 @@ export const AdminDecisionsController = {
 
     //index
     index: async (req: Request, res: Response, next: NextFunction) => {
+if(req.user.role == "admin" && req.query.type == "admin"){
+    let query = Decisions.query()
+    return await UtilDatabase
+        .finder(Decisions, req.query, query)
+        
+        .then((results) => res.json(results))
+        .catch(err => next(err))
 
-        let query = Decisions.query()
-        return await UtilDatabase
-            .finder(Decisions, req.query, query)
-            
-            .then((results) => res.json(results))
-            .catch(err => next(err))
+}else{
+    let query = Decisions.query()
+    .where('status','true')
+    return await UtilDatabase
+        .finder(Decisions, req.query, query)
+        
+        .then((results) => res.json(results))
+        .catch(err => next(err)) 
+      
 
-    },
+}
+    }
+    ,
     show: async (req: Request, res: Response, next: NextFunction) => {
 
         let query = Decisions.query()

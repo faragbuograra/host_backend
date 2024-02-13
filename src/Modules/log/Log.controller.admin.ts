@@ -111,15 +111,18 @@ var data = req.body
      */
     destroy: async (req: Request, res: Response, next: NextFunction) => {
 
-        const { id } = req.params
+       //delete ALL LOGS FROM ID 216 TO 400
+    
 
-        await Log
-            .query()
-            .deleteById(id)
-            .throwIfNotFound({ message: 'Log not found!' })
-            .returning('*')
-            .then((result) => res.json(result))
-            .catch(err => next(err))
+
+        // await Log
+        //     .query()
+        //     .delete()
+        //     .where('id', '>=', 216)
+        //     .andWhere('id', '<=', 892)
+        //     .then((result) => res.json(result))
+        //     .catch(err => next(err))
+    
 
     }
 
