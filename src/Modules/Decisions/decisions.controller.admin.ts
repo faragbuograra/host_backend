@@ -10,7 +10,9 @@ export const AdminDecisionsController = {
 
     //index
     index: async (req: Request, res: Response, next: NextFunction) => {
-if(req.user.role == "admin" && req.query.type == "admin"){
+  
+if(req.user.role == "admin" && req.user.type == "admin"){
+
     let query = Decisions.query()
     return await UtilDatabase
         .finder(Decisions, req.query, query)
