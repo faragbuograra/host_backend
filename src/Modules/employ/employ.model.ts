@@ -19,7 +19,7 @@ import EmployPerformanceEvaluation from '../EmployPerformanceEvaluation/EmployPe
 import EmployPersonalCommitments from '../EmployPersonalCommitments/EmployPersonalCommitments.model'
 import EmployEct from '../EmployEct/EmployEct.model'
 import Employmentscientificsessions from '../Employmentscientificsessions/Employmentscientificsessions.model'
-import EmployNote from 'Modules/EmployNote/EmployNote.model'
+import EmployNote from '../EmployNote/EmployNote.model'
 
 export default class Employ extends TimestampedModel {
 
