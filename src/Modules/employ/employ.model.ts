@@ -177,7 +177,7 @@ export default class Employ extends TimestampedModel {
             modelClass: EmployNote,
             join: {
                 from: 'employ.id',
-                to: 'employNote.employ_id'
+                to: 'employnote.employ_id'
             }
         },
     
