@@ -36,6 +36,7 @@ import { AdminEmployFunctionRoutes } from "../Modules/EmployFunction/EmployFunct
 import { AdminEmployEctRoutes } from "../Modules/EmployEct/EmployEct.routes";
 import { GetStatics } from "./statistics.route";
 import { AdminLogRoutes } from "../Modules/log/Log.routes";
+import { AdminEmployNoteRoutes } from "../Modules/EmployNote/EmployNote.routes";
 
 
 
@@ -121,6 +122,7 @@ export const applyRoutes = (): Router => {
   AdminDecisionsRoutes(router, admin_prefix);
   AdminUserRoutes(router, admin_prefix);
   AdminFeadbackRoutes(router, admin_prefix);
+  AdminEmployNoteRoutes(router, admin_prefix);
   router.get(`${admin_prefix}/statistics`, GetStatics);
   /**
    * ------------------------------------------------------------------------------

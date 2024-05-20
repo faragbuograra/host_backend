@@ -137,7 +137,7 @@ export const AdminEmployController = {
   update: async (req: Request, res: Response, next: NextFunction) => {
     var data = req.body;
     const { id } = req.params;
-    const img = req.file;
+   
     data.user_id = req.user.id;
     const trx = await Employ.startTransaction();
 
@@ -159,12 +159,7 @@ export const AdminEmployController = {
       await trx.commit();
     } catch (err) {
       // Delete file
-      if (img) {
-        const img_path = path.resolve(UPLOADS_PATH, "Employs", img.filename);
-        await unlink(img_path);
-
-        console.log(`successfully deleted ${img_path}`);
-      }
+   
 
       await trx.rollback();
       return next(err);
