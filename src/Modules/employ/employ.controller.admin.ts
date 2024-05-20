@@ -93,7 +93,7 @@ export const AdminEmployController = {
     }
     let query = Employ.query()
       .withGraphFetched(
-        `[employmentDocuments,employFunction,employmentAcademicQualifications,employmentTransportation,employmentPromotions,employmentHealthInsurance,employmentPenalties,employmentCommittees,employmentVacations,employRightToSign,employPerformanceEvaluation,employPersonalCommitments,employEct,employmentscientificsessions]`
+        `[employmentDocuments,employFunction,employmentAcademicQualifications,employmentTransportation,employmentPromotions,employmentHealthInsurance,employmentPenalties,employmentCommittees,employmentVacations,employRightToSign,employPerformanceEvaluation,employPersonalCommitments,employEct,employmentscientificsessions,employNote]`
       )
       .findById(req.params.id)
       .then((result) => res.json(result));

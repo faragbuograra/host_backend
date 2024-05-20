@@ -19,6 +19,7 @@ import EmployPerformanceEvaluation from '../EmployPerformanceEvaluation/EmployPe
 import EmployPersonalCommitments from '../EmployPersonalCommitments/EmployPersonalCommitments.model'
 import EmployEct from '../EmployEct/EmployEct.model'
 import Employmentscientificsessions from '../Employmentscientificsessions/Employmentscientificsessions.model'
+import EmployNote from 'Modules/EmployNote/EmployNote.model'
 
 export default class Employ extends TimestampedModel {
 
@@ -162,7 +163,14 @@ export default class Employ extends TimestampedModel {
             join: {
                 from: 'employ.id',
                 to: 'employEct.employ_id'
-            }
+            },employNote:{
+                relation: Model.HasManyRelation,
+                modelClass: EmployNote,
+                join: {
+                    from: 'employ.id',
+                    to: 'employNote.employ_id'
+                }
+            },
         },employmentscientificsessions:{
             relation: Model.HasManyRelation,
             modelClass: Employmentscientificsessions,
