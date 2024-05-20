@@ -163,14 +163,7 @@ export default class Employ extends TimestampedModel {
             join: {
                 from: 'employ.id',
                 to: 'employEct.employ_id'
-            },employNote:{
-                relation: Model.HasManyRelation,
-                modelClass: EmployNote,
-                join: {
-                    from: 'employ.id',
-                    to: 'employNote.employ_id'
-                }
-            },
+            }
         },employmentscientificsessions:{
             relation: Model.HasManyRelation,
             modelClass: Employmentscientificsessions,
@@ -178,7 +171,15 @@ export default class Employ extends TimestampedModel {
                 from: 'employ.id',
                 to: 'employmentscientificsessions.employ_id'
             }
-        }
+        },
+        employNote:{
+            relation: Model.HasManyRelation,
+            modelClass: EmployNote,
+            join: {
+                from: 'employ.id',
+                to: 'employNote.employ_id'
+            }
+        },
     
     }
        
