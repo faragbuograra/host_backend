@@ -17,11 +17,11 @@ export const PublicAuthRoutes = (router: Router, prefix: string) => {
     //     Multer.none,
     //     Login
     // )
-    // router.post(
-    //     `${ prefix }/register`,
-    //     Multer.none,
-    //     register
-    // )
+    router.post(
+        `${ prefix }/register`,
+        Multer.none,
+        register
+    )
 
     // .route(`${prefix}/users/activePhone`)
     // .patch(

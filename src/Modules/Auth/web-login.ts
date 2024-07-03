@@ -3,7 +3,7 @@ import { ValidationError }                 from 'objection'
 import { JWT_EXPIRY }                      from '../../config'
 import { User }                            from '../Users/user.model'
 import ms                                  from 'ms'
-import Log from "../log/log.model"
+
 
 export const webLogin = async (req: Request, res: Response, next: NextFunction) => {
 console.log(
@@ -39,14 +39,6 @@ console.log( req.body)
             const token     = `Bearer ${ generated }`
             if (valid) {
         
-                await Log
-                .query()
-                .insert({
-                    'user_id': result.id,
-                    'action': "login",
-                    'ip': req.ip,
-                    'note': "login from web"
-                })
               
 
                 return res

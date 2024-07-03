@@ -4,42 +4,29 @@ import { DOMAIN }                             from "../../config"
 
 import { TimestampedModel }                   from '../Shared/TimestampedModel'
 
-export default class EmploymentAcademicQualifications extends TimestampedModel {
+export default class Type extends TimestampedModel {
 
     // Table name
-    static tableName = 'employmentAcademicQualifications'
-    static defaultSort = 'title'
+    static tableName = 'type'
+    static defaultSort = 'name'
 
     // Table columns
     id!: number
-    title!: string 
+    name!: string 
     status!:boolean | string
 
     static jsonSchema = {
         type: 'object',
-      
+
         properties: {
-            title: { type: 'string', minLength: 1 }
+            name: { type: 'string', minLength: 1 }
         }
     }
 
     // Formats img and thumb fields when existing model value returns from database
 
-    $parseDatabaseJson(json: Objection.Pojo): Objection.Pojo {
-        json       = super.$parseDatabaseJson(json);
-        json.file   = json.file != null ? `${DOMAIN}/uploads/files/${json.file}` : null
 
-        
-
-        return json
-    }
-
-    /*
-     * ---------------------------------------------------------------------
-     * Model Relations
-     * ---------------------------------------------------------------------
-     */
-    
+   
     // One-to-many relation with Subcategory model
     static relationMappings = {
     

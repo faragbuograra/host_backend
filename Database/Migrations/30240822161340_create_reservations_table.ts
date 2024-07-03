@@ -1,18 +1,21 @@
 import { Knex } from "knex";
 
-const table_name = 'user'
+const table_name = 'reservations'
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(table_name, (table) => {
-        table.increments('id').primary()
-        table.string('username').unique().nullable()
-        table.string('name').nullable()
-        table.string('email').unique().nullable()
-        table.string('phone').unique().nullable()
+        table.increments('id').primary()    
+        table.integer('Patient_id').nullable().references('id').inTable('user')
+        table.string('title').nullable()
+        table.integer('doctor_id').nullable().references('id').inTable('user')
+table.integer('user_id').nullable().references('id').inTable('user')
+table.string('price').nullable()
+    
 
-        table.string('password').nullable()
+
+
         table.boolean('status').defaultTo(true).notNullable()
-        table.string('role').nullable()
+
         table.timestamp('created_at', { useTz: false }).defaultTo(knex.raw('now()')).notNullable()
         table.timestamp('updated_at', { useTz: false }).defaultTo(knex.raw('now()')).notNullable()
     })
