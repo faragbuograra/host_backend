@@ -1,7 +1,9 @@
 
+import { Model ,QueryBuilderType} from "objection"
 import { DOMAIN }                             from "../../config"
 
 import { TimestampedModel }                   from '../Shared/TimestampedModel'
+import { User } from "../Users/user.model"
 
 export default class Reservations extends TimestampedModel {
 
@@ -27,18 +29,34 @@ export default class Reservations extends TimestampedModel {
     // One-to-many relation with Subcategory model
     static relationMappings = {
     
-        // sub_categorys: {
-        //     relation: Model.HasManyRelation,
-        //     modelClass: Sub_Category,
-        //     join: {
-        //         from: 'categorys.id',
-        //         to: 'subcategorys.categorys_id' 
-        //     },
-        //     filter: (qb: QueryBuilderReservations<Sub_Category>) => qb.select('subcategorys.name')
-        // },
+        auth: {
+            relation: Model.HasOneRelation,
+            modelClass:User,
+            join: {
+                from: 'reservations.user_id',
+                to: 'user.id'
+            },
+            filter: (qb: QueryBuilderType<User>) => qb.select('id', 'name')
+        },
+        doctor: {
+            relation: Model.HasOneRelation,
+            modelClass:User,
+            join: {
+                from: 'reservations.doctor_id',
+                to: 'user.id'
+            },
+            filter: (qb: QueryBuilderType<User>) => qb.select('id', 'name')
+        },
        
-       
-
+        patient: {
+            relation: Model.HasOneRelation,
+            modelClass:User,
+            join: {
+                from: 'reservations.Patient_id',
+                to: 'user.id'
+            },
+            filter: (qb: QueryBuilderType<User>) => qb.select('id', 'name')
+        },
 
     
     }
