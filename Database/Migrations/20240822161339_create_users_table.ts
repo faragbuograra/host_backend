@@ -9,6 +9,9 @@ export async function up(knex: Knex): Promise<void> {
         table.string('name').nullable()
         table.string('email').unique().nullable()
         table.string('phone').unique().nullable()
+        table.string('address').nullable()
+        table.string('sex').nullable()
+        table.string('dob').nullable()
 
         table.string('password').nullable()
         table.boolean('status').defaultTo(true).notNullable()

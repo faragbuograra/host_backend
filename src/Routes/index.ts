@@ -13,6 +13,7 @@ import { logout } from "../Modules/Auth/logout";
 import { AdminTypeRoutes } from "../Modules/Type/type.routes";
 
 import { GetStatics } from "./statistics.route";
+import { AdminReservationsRoutes } from "../Modules/Reservations/reservations.routes";
 
 
 
@@ -80,6 +81,7 @@ export const applyRoutes = (): Router => {
 
   AdminTypeRoutes(router, admin_prefix);
   AdminUserRoutes(router, admin_prefix);
+  AdminReservationsRoutes(router, admin_prefix);
 
   router.get(`${admin_prefix}/statistics`, GetStatics);
   /**
