@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('name').nullable()
         table.string('file').nullable()
         table.string('type').nullable()
+        table.integer('Patient_id').nullable().references('id').inTable('user')
         table.boolean('status').defaultTo(true).notNullable()
         table.timestamp('created_at', { useTz: false }).defaultTo(knex.raw('now()')).notNullable()
         table.timestamp('updated_at', { useTz: false }).defaultTo(knex.raw('now()')).notNullable()

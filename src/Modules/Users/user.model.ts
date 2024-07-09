@@ -5,6 +5,7 @@ import * as jsonwebtoken                  from "jsonwebtoken"
 import { DOMAIN, JWT_EXPIRY, JWT_SECRET } from '../../config'
 
 import { TimestampedModel }               from '../Shared/TimestampedModel'
+import PatientDocument from '../patientDocument/patientDocument.model'
 
 
 export class User extends TimestampedModel {
@@ -112,16 +113,7 @@ export class User extends TimestampedModel {
     }
 
     // Removes password when EXISTING model value returns from database
-    // $parseDatabaseJson(json: Objection.Pojo): Objection.Pojo {
-    //     json       = super.$parseDatabaseJson(json);
-    //     json.img   = json.img != null ? `${DOMAIN}/uploads/user/${json.img}` : null
-
-    //     if ('password' in json)
-    //         delete json.password
-
-    //     return json
-    // }
-
+ 
     // Removes password when a NEW model value returns from database
     $formatJson(json: Objection.Pojo): Objection.Pojo {
         json = super.$formatJson(json);
@@ -138,7 +130,15 @@ export class User extends TimestampedModel {
      * ---------------------------------------------------------------------
      */
     static relationMappings = () => ({
-   
+        PatientDocument: {
+            relation: Model.HasManyRelation,
+            modelClass: PatientDocument,
+            join: {
+                from: 'user.id',
+                to: 'patientDocument.Patient_id'
+            },
+            filter: (qb: QueryBuilderType< PatientDocument>) => qb.select('patientDocument.*')
+        },
         // department: {
         //     relation: Model.HasOneRelation,
         //     modelClass: Department,

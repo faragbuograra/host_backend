@@ -14,6 +14,7 @@ import { AdminTypeRoutes } from "../Modules/Type/type.routes";
 
 import { GetStatics } from "./statistics.route";
 import { AdminReservationsRoutes } from "../Modules/Reservations/reservations.routes";
+import { AdminPatientDocumentRoutes } from "../Modules/patientDocument/patientDocument.routes";
 
 
 
@@ -82,7 +83,7 @@ export const applyRoutes = (): Router => {
   AdminTypeRoutes(router, admin_prefix);
   AdminUserRoutes(router, admin_prefix);
   AdminReservationsRoutes(router, admin_prefix);
-
+  AdminPatientDocumentRoutes(router, admin_prefix);
   router.get(`${admin_prefix}/statistics`, GetStatics);
   /**
    * ------------------------------------------------------------------------------
