@@ -9,6 +9,7 @@ import { User } from "../Modules/Users/user.model";
 import { raw } from "objection";
 import moment from "moment";
 import Management from "../Modules/Type/type.model";
+import Type from "../Modules/Type/type.model";
 
 
 export const GetStatics = async (
@@ -19,7 +20,18 @@ export const GetStatics = async (
   const users = await User.query()
     .count()
     .then((rows: any) => Number(rows[0].count));
-
+    const patient = await User.query()
+    .where('role','patient')
+    .count()
+    .then((rows: any) => Number(rows[0].count));
+    const doctor = await User.query()
+    .where('role','doctor')
+    .count()
+    .then((rows: any) => Number(rows[0].count));
+    const type = await Type.query()
+    
+    .count()
+    .then((rows: any) => Number(rows[0].count));
   const todayusers = await User.query()
     .where(
       "created_at",
@@ -33,9 +45,10 @@ export const GetStatics = async (
 
   const statistics = {
 
-    management :0,
+    management :patient,
     users,
-    Departments:0,
+    doctor:doctor,
+    Departments:type,
     todayusers,
   
     //   mailto:mailStatistics,

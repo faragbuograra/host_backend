@@ -8,20 +8,17 @@ import { UtilDatabase } from "../../Utils/finder";
 export const AdminReservationsController = {
   //index
   index: async (req: Request, res: Response, next: NextFunction) => {
-    if (req.user.role == "admin" ) {
+    console.log(req.user.role)
+   
       let query = Reservations.query()
       .withGraphFetched("[auth,doctor,patient]")
       return await UtilDatabase.finder(Reservations, req.query, query)
 
         .then((results) => res.json(results))
         .catch((err) => next(err));
-    } else {
-      let query = Reservations.query().where("status", "true");
-      return await UtilDatabase.finder(Reservations, req.query, query)
 
-        .then((results) => res.json(results))
-        .catch((err) => next(err));
-    }
+    
+  
   },
   show: async (req: Request, res: Response, next: NextFunction) => {
     let query = Reservations.query()

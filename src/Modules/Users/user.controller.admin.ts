@@ -12,10 +12,11 @@ export const AdminUserController = {
     let query = User.query()
   
 
-  
 
     return await UtilDatabase.finder(User, req.query, query)
-      .then((results) => res.json(results))
+      .then((results) => {
+        console.log(results)
+        res.json(results)})
       .catch((err) => next(err));
   },
 

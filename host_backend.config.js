@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: "marsoul_backend",
+            name: "host_backend",
             script: "node ./build/src/index.js",
             instances: "max",
             autorestart: true,

@@ -6,9 +6,7 @@ import ms                                  from 'ms'
 
 
 export const webLogin = async (req: Request, res: Response, next: NextFunction) => {
-console.log(
-        '🚀 ~ file: web-login.ts ~ line 9 ~ webLogin ~ req.body',
-)
+
     let { username, password } = req.body
 console.log( req.body)
     if (!username || !password) {

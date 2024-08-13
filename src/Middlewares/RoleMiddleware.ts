@@ -14,7 +14,7 @@ export const RoleMiddleware = (grantedRole: string) => {
             return next(err)
         }
 
-        if (user.status =='false') {
+        if (user.status ==false) {
             let err = new ValidationError({
                 type: "UnauthorizedAccess",
                 message: "Your account has been disabled"
