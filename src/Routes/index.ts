@@ -64,7 +64,7 @@ export const applyRoutes = (): Router => {
    *  USER ROUTES
    * ------------------------------------------------------------------------------
    */
-  // router.use(user_prefix, RoleMiddleware(2));
+   router.use(admin_prefix, RoleMiddleware(''));
 
 
 

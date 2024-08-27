@@ -23,15 +23,15 @@ export const RoleMiddleware = (grantedRole: string) => {
             return next(err)
         }
 
-        if (user.role  && grantedRole != user.role) {
+        // if (user.role  && grantedRole != user.role) {
        
-            let err = new ValidationError({
-                type: "UnauthorizedAccess",
-                message: "route requires the following roles Admin"
-            })
+        //     let err = new ValidationError({
+        //         type: "UnauthorizedAccess",
+        //         message: "route requires the following roles Admin"
+        //     })
 
-            return next(err)
-        }
+        //     return next(err)
+        // }
 
        
 
